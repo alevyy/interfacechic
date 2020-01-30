@@ -1,0 +1,67 @@
+<DOCTYPE! html>
+
+<html>
+<head>
+	
+	
+	<link rel="stylesheet" href="style.css" />
+	<style>
+		.grid-container {
+		  display: grid;
+		  grid-template-columns: auto;
+		  grid-gap: 10px;
+		  background-color: #2196F3;
+		  padding: 10px;
+
+		}
+
+		.progress-container{
+			width: auto;
+			height: 100px;
+			border-radius: 10px;
+			background-color: rgb(99, 167, 168);
+		}
+		
+		.grid-container > div {
+		  background-color: rgba(255, 255, 255, 0.8);
+		  text-align: center;
+		  padding: 20px;
+		  font-size: 30px;
+		}
+		
+		</style>
+</head>
+<body>
+	<button onclick="myFunction()">Add a new point</button>
+	
+	
+	<div id="hiddenMessage" style="display:none">
+		<p>You are going on a cruise</p>
+		<button id="countDownButton" onclick="countDown()">10</button>
+	</div>
+	<p>The Subject of your point</p>
+	<textarea id="Subject" rows="1" cols="50">
+	</textarea>
+	<p>The length of your point(1 for 10 min, 2 for 20 min , 3 for 30 min ...)</p>
+	<textarea id="Length" rows="1" cols="50">
+	</textarea>
+	<div class="splitscreen">
+		<div class="left">
+			<div id="tableau" class="grid-container">
+			  </div>
+		</div>
+	
+		<div class="right">
+			<div class="progress-bar" id="progress-bar">
+				<div class="progress" id="progress"></div>
+			</div>
+		</div>
+	</div>
+
+	<button onclick="change()">Change Point</button>
+	<button onclick="progress()">Start</button>
+	
+	
+	<script src="js/script.js"></script>
+</body>
+</html>

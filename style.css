@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+p {
+    color: white;
+  }
+body{
+    margin: 0;
+    padding: 0;
+    background: #333;
+}
+.percent-count{
+    width: 50px;
+    height: 450px;
+    margin: 100px auto;
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+}
+.progress-bar{
+    width: 26px;
+    height: 50px;
+    background-color: #bbb;
+    border-radius: 13px;
+    margin: 50px auto;
+}
+.progress{
+    width: 20px;
+    height: 0px;
+    border-radius: 10px;
+    background-color: darkturquoise;
+    
+}
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropup {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropup-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    bottom: 50px;
+    z-index: 1;
+  }
+  
+  .dropup-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropup-content a:hover {background-color: #ccc}
+  
+  .dropup:hover .dropup-content {
+    display: block;
+  }
+  
+  .dropup:hover .dropbtn {
+    background-color: #2980B9;
+  }
+  .clearfix{
+    clear:both
+}
+.splitscreen {
+    display:flex;
+}
+.splitscreen .left {
+    flex: 6;
+}
+.splitscreen .right {
+    flex: 1;
+}
