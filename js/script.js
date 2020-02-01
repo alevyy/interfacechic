@@ -39,13 +39,14 @@ function progress() {
     
     var progress = 0;
     var id = setInterval(frame,1000);
+    var nodet = document.getElementById(currentid);
+        nodet.style.background = "red";
    
         
     function frame(){
         var i;
         var somme =0;
         var node = document.getElementById(currentid);
-        node.style.background = "red";
         if(currentid<nb){
             somme=0;
             for(i=1;i<(currentid+1);i++){
@@ -138,7 +139,11 @@ function start() {
 }, 1000);
 }
 function change(){
+    var node = document.getElementById(currentid);
+    node.style.background="blue";
     currentid+=1;
+    var nodec = document.getElementById(currentid);
+    nodec.style.background="red";
 }
 
 function clearBox(elementID)
