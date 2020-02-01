@@ -29,6 +29,9 @@ function myFunction() {
     heightime.style.height = sizebar +'px' ;
     document.getElementById("tableau").appendChild(node);
   }
+var nb_supp=1000;
+length_supp=0;
+var newd = 1;
 function progress() {
     var prg = document.getElementById('progress');
     
@@ -59,12 +62,38 @@ function progress() {
                 var der = document.getElementById(nb);
                 var str = der.style.height;
                 var valu = Number(str.split("px",1));
+                if (newd){
+                    newd=0;
+                    length_supp=0;
+                    var nodesup = document.createElement("div");
+                    var sub = der.innerHTML;
+                    var textnode = document.createTextNode(sub);
+                    nodesup.id= nb_supp;
+                    nodesup.style.height = 60+'px';
+                    var btn = document.createElement("BUTTON");
+                    btn.innerHTML = "DELETE";
+                    var i = nb_supp;
+                    btn.onclick= function() {clearBox(i)};
+                    document.body.appendChild(btn);
+                    nodesup.appendChild(textnode);
+                    document.getElementById("trop").insertBefore(nodesup,document.getElementById("trop").childNodes[0]);
+                    document.getElementById(nb_supp).appendChild(btn);
+                }
                 if(valu>70){
                     der.style.height= (valu-60)+'px';
+                    length_supp+=60;
+                    var suppdiv = document.getElementById(nb_supp);
+                    suppdiv.style.height=length_supp+'px';
+
                 }
                 else{
+                    length_supp+=60;
+                    var suppdiv = document.getElementById(nb_supp);
+                    suppdiv.style.height=length_supp+'px';
                     der.style.display= "none";
                     nb-=1;
+                    newd=1;
+                    nb_supp+=1;
                 }
 
             }
@@ -110,4 +139,10 @@ function start() {
 }
 function change(){
     currentid+=1;
+}
+
+function clearBox(elementID)
+{
+    document.getElementById(elementID).style.display = "none";
+    
 }
