@@ -108,7 +108,7 @@ function progress() {
             alert("You finished your meeting");
         } else {
             if(continueee){
-                progress+=10;
+                progress+=0.1;
             }
             prg.style.height = progress + 'px';
         }
