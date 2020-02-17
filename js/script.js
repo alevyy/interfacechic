@@ -14,6 +14,7 @@ function countDown() {
 var nb = 0;
 var sizebar = 0;
 var currentid = 1;
+var continueee=1;
 function myFunction() {
     var node = document.createElement("div");
     var sub = document.getElementById("Subject").value;
@@ -100,13 +101,24 @@ function progress() {
             }
         }
 
-        if(progress == sizebar) {
+        if(progress >= sizebar) {
             clearInterval(id);
+            var node = document.getElementById(currentid);
+            node.style.background="blue";
+            alert("You finished your meeting");
         } else {
-            progress+=10;
+            if(continueee){
+                progress+=10;
+            }
             prg.style.height = progress + 'px';
         }
     }
+}
+function Arrete() {
+    continueee=0;
+}
+function Continue() {
+    continueee=1;
 }
 function start() {
       // Set the date we're counting down to
