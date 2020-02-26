@@ -19,32 +19,42 @@ function myFunction() {
     var node = document.createElement("div");
     var sub = document.getElementById("Subject").value;
     var leng = document.getElementById("Length").value;
-    var heightime = document.getElementById('progress-bar');
     var textnode = document.createTextNode(sub);
     node.appendChild(textnode);
     nb+=1;
     node.id= nb;
-    sizebar += (60*leng);
-    node.style.height = (60*leng)+'px';
     
-    heightime.style.height = sizebar +'px' ;
+    node.style.height = (6*leng)+'px';
+    
+    
     document.getElementById("tableau").appendChild(node);
   }
 var nb_supp=1000;
 length_supp=0;
+var reset=0;
 var newd = 1;
 function progress() {
     var prg = document.getElementById('progress');
-    
     var percent = document.getElementById('percentCount');
+    var progress=0;
     
-    var progress = 0;
     var id = setInterval(frame,1000);
     var nodet = document.getElementById(currentid);
-        nodet.style.background = "red";
+        nodet.style.background = "green";
+
+        var nodec = document.getElementById(currentid);
+        var stri= nodec.style.height;
+        var heightime = document.getElementById('progress-bar');
+        var vali = Number(stri.split("px",1));
+        sizebar =4*vali;
+        heightime.style.height = (4*vali)+'px';
    
         
     function frame(){
+        if(reset){
+            reset=0;
+            progress=0;
+        }
         var i;
         var somme =0;
         var node = document.getElementById(currentid);
@@ -56,14 +66,20 @@ function progress() {
                 var val = Number(str.split("px",1));
                 somme += val;
             }
-            if(progress>(somme+30)){
-                node.style.background="green";
+        }
+
+        if(progress >= sizebar) {
+            if(currentid!=nb){
+            node.style.background="red";
                 var str = node.style.height;
                 var val = Number(str.split("px",1));
-                node.style.height = (val+60)+'px';
+                node.style.height = (val+6)+'px';
                 var der = document.getElementById(nb);
                 var str = der.style.height;
                 var valu = Number(str.split("px",1));
+                var heightime = document.getElementById('progress-bar');
+                sizebar += 24;
+                heightime.style.height = sizebar+'px';
                 if (newd){
                     newd=0;
                     length_supp=0;
@@ -71,7 +87,7 @@ function progress() {
                     var sub = der.innerHTML;
                     var textnode = document.createTextNode(sub);
                     nodesup.id= nb_supp;
-                    nodesup.style.height = 60+'px';
+                    nodesup.style.height = 6+'px';
                     var btn = document.createElement("BUTTON");
                     btn.innerHTML = "DELETE";
                     var i = nb_supp;
@@ -81,15 +97,15 @@ function progress() {
                     document.getElementById("trop").insertBefore(nodesup,document.getElementById("trop").childNodes[0]);
                     document.getElementById(nb_supp).appendChild(btn);
                 }
-                if(valu>70){
-                    der.style.height= (valu-60)+'px';
-                    length_supp+=60;
+                if(valu>7){
+                    der.style.height= (valu-6)+'px';
+                    length_supp+=6;
                     var suppdiv = document.getElementById(nb_supp);
                     suppdiv.style.height=length_supp+'px';
 
                 }
                 else{
-                    length_supp+=60;
+                    length_supp+=6;
                     var suppdiv = document.getElementById(nb_supp);
                     suppdiv.style.height=length_supp+'px';
                     der.style.display= "none";
@@ -97,18 +113,16 @@ function progress() {
                     newd=1;
                     nb_supp+=1;
                 }
-
             }
-        }
-
-        if(progress >= sizebar) {
-            clearInterval(id);
-            var node = document.getElementById(currentid);
-            node.style.background="blue";
-            alert("You finished your meeting");
+            else{
+                clearInterval(id);
+                var node = document.getElementById(currentid);
+                node.style.background="blue";
+                alert("You finished your meeting");
+            }
         } else {
             if(continueee){
-                progress+=0.1;
+                progress+=0.4;
             }
             prg.style.height = progress + 'px';
         }
@@ -151,11 +165,19 @@ function start() {
 }, 1000);
 }
 function change(){
+    
     var node = document.getElementById(currentid);
     node.style.background="blue";
     currentid+=1;
+    reset=1;
     var nodec = document.getElementById(currentid);
-    nodec.style.background="red";
+    var heightime = document.getElementById('progress-bar');
+    var stri= nodec.style.height;
+    var vali = Number(stri.split("px",1));
+    
+    sizebar = 4*vali;
+    heightime.style.height = (4*vali)+'px';
+    nodec.style.background="green";
 }
 
 function clearBox(elementID)
